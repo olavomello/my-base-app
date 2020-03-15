@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+// Others
+import Configs from './Configs';
+import Background from './components/Background';
+import FacebookButton from './components/FacebookButton';
+
+// Splashscreen
+import Lottie from 'lottie-react-native';
+import animSplash from './assets/animSplash.json';
+
+export default class App extends React.Component {
+  render(){
+    return (    
+      <Background colors={Configs.BGCOLOR}>  
+        <Lottie 
+          source      = {animSplash}  
+          resizeMode  = 'contain'
+          autoSize
+          style       = {
+                          {
+                            width:'100%',
+                            height:'100%'
+                          }
+                        }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <FacebookButton/>
+        </Lottie>
+      </Background>
+    );
+  }
 }
-
-export default App;
